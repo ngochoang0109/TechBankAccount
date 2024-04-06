@@ -1,0 +1,15 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: account.command
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: bankAccount
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringSerialization
+      value-deserializer: org.apache.kafka.support.serialization.JsonSerialization
