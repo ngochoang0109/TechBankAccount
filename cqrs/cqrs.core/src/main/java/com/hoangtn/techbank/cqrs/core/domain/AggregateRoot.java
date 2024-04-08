@@ -22,6 +22,8 @@ public abstract class AggregateRoot {
 
     /**
      * Contain all changes that make to Aggregate in the form of events
+     * <br></br>
+     * Log for changing aggregate
      */
     private final List<BaseEvent> changes = new ArrayList<>();
 

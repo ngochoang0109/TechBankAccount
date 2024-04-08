@@ -1,0 +1,13 @@
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql-server
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: productInventory
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 12345678
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - '3018:3018'

@@ -1,0 +1,24 @@
+services:
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3018:3018"
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE_NAME: "productInventory"
+      MYSQL_ROOT_PASSWORD: "12345678"
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/mongo:/data/db
+
+  redis:
+    image: redis:latest
+    ports:
+      - "18042:18042"
+    volumes:
+      - ./data/redis:/data

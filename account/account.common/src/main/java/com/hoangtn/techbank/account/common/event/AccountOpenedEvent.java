@@ -8,7 +8,6 @@ import lombok.experimental.Accessors;
 
 import java.util.Date;
 
-@Accessors(chain = true)
 @Getter
 @Setter
 public class AccountOpenedEvent extends BaseEvent {

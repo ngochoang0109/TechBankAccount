@@ -9,4 +9,5 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 public class FundWithDrawnEvent extends BaseEvent {
+    private double amount;
 }
