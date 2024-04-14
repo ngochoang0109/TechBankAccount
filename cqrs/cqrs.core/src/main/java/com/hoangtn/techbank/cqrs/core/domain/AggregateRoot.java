@@ -61,4 +61,5 @@ public abstract class AggregateRoot {
             applyChange(event, Boolean.FALSE);
         });
     }
+
 }

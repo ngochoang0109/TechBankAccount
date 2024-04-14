@@ -6,6 +6,7 @@ import com.hoangtn.techbank.account.common.event.AccountOpenedEvent;
 import com.hoangtn.techbank.account.common.event.FundDepositedEvent;
 import com.hoangtn.techbank.account.common.event.FundWithDrawnEvent;
 import com.hoangtn.techbank.cqrs.core.domain.AggregateRoot;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
@@ -13,6 +14,8 @@ import java.util.Date;
 @NoArgsConstructor
 public class AccountAggregate extends AggregateRoot {
     private boolean active;
+
+    @Getter
     private double balance;
 
     public AccountAggregate(OpenAccountCommand openAccountCommand) {
@@ -82,4 +85,5 @@ public class AccountAggregate extends AggregateRoot {
         this.id = event.getId();
         this.active = false;
     }
+
 }

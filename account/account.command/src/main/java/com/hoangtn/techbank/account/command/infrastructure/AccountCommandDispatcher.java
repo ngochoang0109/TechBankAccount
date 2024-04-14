@@ -5,7 +5,10 @@ import com.hoangtn.techbank.cqrs.core.command.CommandHandlerMethod;
 import com.hoangtn.techbank.cqrs.core.infrastructure.CommandDispatcher;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class AccountCommandDispatcher implements CommandDispatcher {

@@ -7,6 +7,7 @@ import com.hoangtn.techbank.cqrs.core.event.EventModel;
 import com.hoangtn.techbank.cqrs.core.exception.AggregateNotFoundException;
 import com.hoangtn.techbank.cqrs.core.exception.ConcurrencyException;
 import com.hoangtn.techbank.cqrs.core.infrastructure.EventStore;
+import com.hoangtn.techbank.cqrs.core.producer.EventProducer;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -17,8 +18,12 @@ public class AccountEventStore implements EventStore {
 
     private final EventStoreRepository eventStoreRepository;
 
-    public AccountEventStore(EventStoreRepository eventStoreRepository){
+    private final EventProducer eventProducer;
+
+    public AccountEventStore(EventStoreRepository eventStoreRepository,
+                             EventProducer eventProducer){
         this.eventStoreRepository = eventStoreRepository;
+        this.eventProducer = eventProducer;
     }
 
     @Override
@@ -40,8 +45,8 @@ public class AccountEventStore implements EventStore {
             eventModel.setEventData(event);
 
             EventModel persistedEventModel = eventStoreRepository.save(eventModel);
-            if (persistedEventModel != null) {
-                // TODO: produce event to kafka
+            if (persistedEventModel.getId() != null && !persistedEventModel.getId().isEmpty()) {
+                eventProducer.produce(event.getClass().getSimpleName(), event);
             }
         }
     }
@@ -54,4 +59,5 @@ public class AccountEventStore implements EventStore {
         }
         return eventStream.stream().map(EventModel::getEventData).toList();
     }
+
 }
