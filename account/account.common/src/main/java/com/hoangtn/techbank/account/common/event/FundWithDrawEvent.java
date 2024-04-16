@@ -8,6 +8,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @Getter
 @Setter
-public class FundWithDrawnEvent extends BaseEvent {
+public class FundWithDrawEvent extends BaseEvent {
     private double amount;
 }
