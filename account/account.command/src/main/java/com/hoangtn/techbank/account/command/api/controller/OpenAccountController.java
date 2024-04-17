@@ -17,8 +17,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @RestController
-@RequestMapping(value = "/api/v1/openBankAccount")
+@RequestMapping(value = "/api/v1/account-service")
 public class OpenAccountController {
+
     private final Logger logger = Logger.getLogger(OpenAccountController.class.getName());
 
     private final CommandDispatcher commandDispatcher;
@@ -27,7 +28,7 @@ public class OpenAccountController {
         this.commandDispatcher = commandDispatcher;
     }
 
-    @PostMapping(value = "")
+    @PostMapping(value = "/open-account")
     public ResponseEntity<BaseResponse> openAccount(@RequestBody OpenAccountCommand account) {
         String id = UUID.randomUUID().toString();
         account.setId(id);
@@ -43,4 +44,5 @@ public class OpenAccountController {
             return new ResponseEntity<>(new OpenAccountResponse(id, messageError), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    
 }

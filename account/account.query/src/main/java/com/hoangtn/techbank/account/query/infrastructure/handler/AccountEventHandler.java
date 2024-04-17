@@ -1,14 +1,11 @@
 package com.hoangtn.techbank.account.query.infrastructure.handler;
 
-import com.hoangtn.techbank.account.common.dto.AccountType;
 import com.hoangtn.techbank.account.common.event.AccountClosedEvent;
 import com.hoangtn.techbank.account.common.event.AccountOpenedEvent;
 import com.hoangtn.techbank.account.common.event.FundDepositedEvent;
 import com.hoangtn.techbank.account.common.event.FundWithDrawEvent;
 import com.hoangtn.techbank.account.query.domain.AccountRepository;
 import com.hoangtn.techbank.account.query.domain.BankAccount;
-
-import java.util.Date;
 
 public class AccountEventHandler implements EventHandler {
 
@@ -44,7 +41,7 @@ public class AccountEventHandler implements EventHandler {
     @Override
     public void on(FundWithDrawEvent event) {
         BankAccount account = accountRepository.findById(event.getId()).orElseThrow(
-                () -> new RuntimeException()
+            () -> new RuntimeException()
         );
 
         double currentBalance = account.getBalance();
