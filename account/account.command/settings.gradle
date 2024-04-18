@@ -1,3 +1,8 @@
 rootProject.name = 'account.command'
 
-include("account.common")
+include ':account.common'
+project(':account.common').projectDir = file('../account.common')
+
+include ':cqrs.core'
+project(':cqrs.core').projectDir = file('../../cqrs/cqrs.core')
+

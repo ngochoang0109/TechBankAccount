@@ -1,11 +1,20 @@
 plugins {
+	id 'application'
 	id 'java'
 	id 'org.springframework.boot' version '3.2.4'
 	id 'io.spring.dependency-management' version '1.1.4'
 }
 
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
 group = 'com.hoangtn.techbank'
 version = '1.0.0'
+
+application {
+	mainClass = 'com/hoangtn/techbank/account/query/QueryApplication'
+}
 
 java {
 	sourceCompatibility = '17'
@@ -33,8 +42,4 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.kafka:spring-kafka-test'
-}
-
-tasks.named('test') {
-	useJUnitPlatform()
 }

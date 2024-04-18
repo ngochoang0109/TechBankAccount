@@ -20,8 +20,8 @@ spring:
       bootstrap-servers: localhost:9092
       group-id: bankAccountConsumer
       auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringSerialization
-      value-deserializer: org.apache.kafka.support.serialization.JsonSerialization
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.support.serialization.JsonDeserializer
       properties:
         spring:
           json:
