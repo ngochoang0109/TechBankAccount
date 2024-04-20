@@ -1,29 +1,29 @@
 server:
-  port: 8082
+    port: 8082
 spring:
-  application:
-    name: account.query
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-    show-sql: true
-    hibernates:
-      ddl-auto: update
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bankAccount?createDatabaseIfNotExist=true
-    username: root
-    password: techbankRootPsw
-  kafka:
-    listener:
-      ack-mode: MANUAL_IMMEDIATE
+    application:
+        name: account.query
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL8Dialect
+        show-sql: true
+        hibernates:
+            ddl-auto: update
+    datasource:
+        driverClassName: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/bankAccount?createDatabaseIfNotExist=true
+        username: root
+        password: techbankRootPsw
+    kafka:
+        listener:
+            ack-mode: MANUAL_IMMEDIATE
     consumer:
-      bootstrap-servers: localhost:9092
-      group-id: bankAccountConsumer
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      properties:
-        spring:
-          json:
-            trusted:
-              packages: '*'
+        bootstrap-servers: localhost:9092
+        group-id: bankAccountConsumer
+        auto-offset-reset: earliest
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+        properties:
+            spring:
+                json:
+                    trusted:
+                        packages: '*'
